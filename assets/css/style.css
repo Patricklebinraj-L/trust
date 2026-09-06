@@ -704,8 +704,8 @@ body.menu-open {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(115deg, rgba(26, 26, 26, .94) 0%, rgba(232, 114, 12, .75) 50%, rgba(26, 26, 26, .4) 100%),
-    linear-gradient(to top, rgba(26, 26, 26, .82) 0%, transparent 48%);
+    linear-gradient(115deg, rgba(26, 26, 26, .82) 0%, rgba(232, 114, 12, .35) 45%, rgba(26, 26, 26, .22) 100%),
+    linear-gradient(to top, rgba(26, 26, 26, .7) 0%, transparent 50%);
 }
 
 .hero-content {
@@ -727,7 +727,7 @@ body.menu-open {
 }
 
 .hero-eyebrow {
-  color: var(--c-secondary-soft) !important;
+  color: #D4782C;
 }
 
 .hero-copy .lead {
@@ -753,7 +753,7 @@ body.menu-open {
 }
 
 .hero-trust i {
-  color: var(--c-secondary-soft);
+  color: #D4782C;
 }
 
 .hero-card-stack {
@@ -1938,12 +1938,17 @@ body.menu-open {
 @media (max-width: 950px) {
   .hero-content {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
   }
 
   .hero-card-stack {
-    max-width: 480px;
-    margin-inline: auto;
+    max-width: 100%;
+    margin-inline: 0;
+    width: 100%;
+  }
+
+  .hero-photo-card {
+    width: 100%;
   }
 
   .hero-v2 {
@@ -2006,9 +2011,9 @@ body.menu-open {
   }
 
   .hero-floating-card {
-    margin-left: .75rem;
-    margin-right: .75rem;
-    margin-top: -36px;
+    margin-left: .5rem;
+    margin-right: .5rem;
+    margin-top: -32px;
   }
 
   .cta-banner {
@@ -2114,7 +2119,7 @@ body.menu-open {
 .hero-v2::before {
   width: 280px;
   height: 280px;
-  background: rgba(232, 114, 12, .4);
+  background: rgba(232, 114, 12, .18);
   top: 15%;
   right: 18%;
 }
@@ -2122,7 +2127,7 @@ body.menu-open {
 .hero-v2::after {
   width: 220px;
   height: 220px;
-  background: rgba(232, 114, 12, .4);
+  background: rgba(232, 114, 12, .18);
   bottom: 20%;
   left: 10%;
   animation-delay: -4s;
@@ -2418,21 +2423,21 @@ body {
 
 .hero-bg-overlay {
   background:
-    linear-gradient(115deg, rgba(26, 26, 26, .92) 0%, rgba(232, 114, 12, .72) 55%, rgba(26, 26, 26, .4) 100%),
-    linear-gradient(to top, rgba(26, 26, 26, .85) 0%, transparent 50%) !important;
+    linear-gradient(115deg, rgba(26, 26, 26, .82) 0%, rgba(232, 114, 12, .35) 45%, rgba(26, 26, 26, .22) 100%),
+    linear-gradient(to top, rgba(26, 26, 26, .7) 0%, transparent 50%) !important;
 }
 
 .hero-v2::before {
-  background: rgba(232, 114, 12, .4) !important;
+  background: rgba(232, 114, 12, .18) !important;
 }
 
 .hero-v2::after {
-  background: rgba(232, 114, 12, .35) !important;
+  background: rgba(232, 114, 12, .18) !important;
 }
 
 .hero-eyebrow,
 .hero-v2 .hero-eyebrow {
-  color: #E8720C !important;
+  color: #D4782C !important;
 }
 
 .hero-copy h1 {
@@ -2448,7 +2453,7 @@ body {
 }
 
 .hero-trust i {
-  color: #E8720C !important;
+  color: #D4782C !important;
 }
 
 /* Primary CTA = green (button color) */
@@ -3119,7 +3124,7 @@ body::before {
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: radial-gradient(600px circle at var(--mx) var(--my), rgba(232, 114, 12, .16), transparent 60%);
+  background: radial-gradient(600px circle at var(--mx) var(--my), rgba(232, 114, 12, .08), transparent 60%);
   transition: background .15s ease-out;
 }
 
@@ -3157,9 +3162,9 @@ body::before {
 
 .hero-eyebrow {
   padding: .3rem .85rem;
-  border: 1px solid rgba(232, 114, 12, .4);
+  border: 1px solid rgba(212, 120, 44, .4);
   border-radius: var(--radius-full);
-  background: rgba(232, 114, 12, .1);
+  background: rgba(212, 120, 44, .08);
   backdrop-filter: blur(6px);
 }
 
@@ -3185,7 +3190,7 @@ body::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, rgba(232, 114, 12, .18), transparent 40%, rgba(232, 114, 12, .14));
+  background: linear-gradient(160deg, rgba(232, 114, 12, .1), transparent 40%, rgba(232, 114, 12, .08));
   mix-blend-mode: overlay;
   pointer-events: none;
 }
@@ -3193,7 +3198,7 @@ body::before {
 /* ---- Premium button: layered gradient + glow pulse for the hero CTA ---- */
 .btn-primary,
 .button {
-  background: linear-gradient(120deg, #E8720C 0%, #C15B08 60%, #E8720C 100%) !important;
+  background: linear-gradient(120deg, #D4782C 0%, #A84D06 60%, #D4782C 100%) !important;
   background-size: 220% auto !important;
   transition: background-position .6s var(--ease), transform var(--t), box-shadow var(--t) !important;
 }
@@ -3201,7 +3206,7 @@ body::before {
 .btn-primary:hover,
 .button:hover {
   background-position: 100% 0 !important;
-  box-shadow: 0 0 0 1px rgba(232, 114, 12, .2), 0 18px 48px rgba(232, 114, 12, .35) !important;
+  box-shadow: 0 0 0 1px rgba(232, 114, 12, .15), 0 18px 48px rgba(232, 114, 12, .25) !important;
 }
 
 .hero-copy .btn-primary {
@@ -3210,15 +3215,15 @@ body::before {
 
 @keyframes ctaPulse {
 
-  0%,
-  100% {
-    box-shadow: 0 8px 28px rgba(232, 114, 12, .35);
-  }
+   0%,
+   100% {
+     box-shadow: 0 8px 28px rgba(232, 114, 12, .25);
+   }
 
-  50% {
-    box-shadow: 0 8px 40px rgba(232, 114, 12, .65), 0 0 0 6px rgba(232, 114, 12, .12);
-  }
-}
+   50% {
+     box-shadow: 0 8px 40px rgba(232, 114, 12, .45), 0 0 0 6px rgba(232, 114, 12, .08);
+   }
+ }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-copy .btn-primary {
