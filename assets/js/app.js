@@ -41,6 +41,30 @@
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
 
+  // ---------- Scroll accent balls ----------
+  const ballLeft = document.createElement('div');
+  ballLeft.className = 'scroll-ball scroll-ball-left';
+  ballLeft.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(ballLeft);
+
+  const ballRight = document.createElement('div');
+  ballRight.className = 'scroll-ball scroll-ball-right';
+  ballRight.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(ballRight);
+
+  const ballSections = document.querySelectorAll('.section, .hero-v2');
+  let ballVisible = false;
+  const ballObserver = new IntersectionObserver((entries) => {
+    const anyVisible = entries.some((entry) => entry.isIntersecting);
+    if (anyVisible !== ballVisible) {
+      ballVisible = anyVisible;
+      ballLeft.classList.toggle('is-visible', ballVisible);
+      ballRight.classList.toggle('is-visible', ballVisible);
+    }
+  }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
+
+  ballSections.forEach((sec) => ballObserver.observe(sec));
+
   // ---------- Mobile drawer menu ----------
   const drawer = document.getElementById('mobileDrawer');
   // Ensure drawer starts closed (prevents leaked open state)
