@@ -25,6 +25,10 @@ Office: Thiruvannamalai, Tamil Nadu
 - If both the API and cache fail, `assets/json/images.json` is normalized and used automatically so image slots never render empty.
 - Pixabay images are labeled illustrative and must not be presented as verified Trust activity.
 
+## Refreshing a live browser
+- Open `/clear-cache.php` on the deployed domain when an older UI is still displayed.
+- The utility clears this project's local/session storage, cookies, Cache Storage, service workers, IndexedDB where supported, PHP session data, Pixabay temporary cache, and OPcache when available, then reloads the homepage with a fresh cache-busting query.
+
 ## Notes
 - No trustee personal names are displayed on the public site
 - Impact statistics are never fabricated
