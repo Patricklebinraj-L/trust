@@ -1,0 +1,12 @@
+Image credits (free stock — Unsplash License)
+==============================================
+All images under assets/images/ are from Unsplash (https://unsplash.com)
+and are free to use under the Unsplash License:
+https://unsplash.com/license
+
+They are used as ILLUSTRATIVE MEDIA only on this website.
+They are NOT photographs of verified Om Shanthi Trust & Foundation activities
+unless explicitly marked "Verified" after admin upload of real activity media.
+
+Replace illustrative images with verified foundation photography via the CMS
+whenever real activity photos are available.
