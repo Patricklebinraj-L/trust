@@ -167,6 +167,54 @@
     });
   });
 
+  // ---------- Toast notifications ----------
+  function showToast(title, message, type, duration) {
+    type = type || 'success';
+    duration = duration || 5000;
+    var container = document.querySelector('.toast-container');
+    if (!container) {
+      container = document.createElement('div');
+      container.className = 'toast-container';
+      container.setAttribute('role', 'region');
+      container.setAttribute('aria-label', 'Notifications');
+      document.body.appendChild(container);
+    }
+    var toast = document.createElement('div');
+    toast.className = 'toast toast-' + type;
+    toast.setAttribute('role', 'alert');
+    var iconMap = { success: 'bi-check-lg', error: 'bi-exclamation-lg' };
+    toast.innerHTML =
+      '<div class="toast-icon"><i class="bi ' + (iconMap[type] || 'bi-info-lg') + '"></i></div>' +
+      '<div class="toast-body">' +
+        '<div class="toast-title">' + title + '</div>' +
+        (message ? '<div class="toast-message">' + message + '</div>' : '') +
+      '</div>' +
+      '<button class="toast-close" aria-label="Dismiss"><i class="bi bi-x"></i></button>' +
+      '<div class="toast-progress" style="width:100%"></div>';
+    container.appendChild(toast);
+    var progress = toast.querySelector('.toast-progress');
+    var closeBtn = toast.querySelector('.toast-close');
+    var remove = function () {
+      toast.classList.add('is-removing');
+      setTimeout(function () {
+        if (toast.parentNode) toast.parentNode.removeChild(toast);
+      }, 350);
+    };
+    closeBtn.addEventListener('click', remove);
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        toast.classList.add('is-visible');
+        if (duration > 0) {
+          progress.style.transition = 'width ' + duration + 'ms linear';
+          requestAnimationFrame(function () {
+            progress.style.width = '0%';
+          });
+          setTimeout(remove, duration);
+        }
+      });
+    });
+  }
+
   // ---------- Timed donation prompt ----------
   const donationModal = document.getElementById('donationModal');
   if (donationModal) {

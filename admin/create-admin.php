@@ -46,8 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div class="card form">
   <h2 style="margin-top:0">Create initial admin</h2>
   <p style="color:var(--c-muted);font-size:0.9rem">Run once, then delete this file.</p>
-  <?php if ($message): ?><div class="alert"><?= e($message) ?></div><?php endif; ?>
-  <?php if ($error): ?><div class="alert alert-error"><?= e($error) ?></div><?php endif; ?>
+  <?php if ($message): ?><script>showToast('Success', <?= json_encode($message) ?>, 'success', 8000);</script><?php endif; ?>
+  <?php if ($error): ?><script>showToast('Error', <?= json_encode($error) ?>, 'error', 8000);</script><?php endif; ?>
   <form method="post">
     <div class="field"><label>Name</label><input name="name" required></div>
     <div class="field"><label>Email</label><input name="email" type="email" required></div>

@@ -63,7 +63,7 @@ $page_title = 'Admin Login';
       <h1 style="font-size:1.5rem;margin:0.75rem 0 0.25rem">Admin Sign In</h1>
       <p style="margin:0;font-size:0.9rem;color:var(--c-muted)">Om Shanthi Trust & Foundation</p>
     </div>
-    <?php if ($error): ?><div class="alert alert-error"><?= e($error) ?></div><?php endif; ?>
+    <?php if ($error): ?><script>showToast('Login Error', <?= json_encode($error) ?>, 'error', 8000);</script><?php endif; ?>
     <form method="post">
       <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="username"></div>
       <div class="field"><label for="password">Password</label><input id="password" name="password" type="password" required autocomplete="current-password"></div>

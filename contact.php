@@ -32,7 +32,7 @@ include __DIR__.'/includes/header.php';
 <section class="section">
   <div class="container grid-2">
     <form class="card form" method="post" data-aos="fade-right" novalidate>
-      <?php if ($message): ?><div class="alert <?= $error ? 'alert-error' : '' ?>"><?= e($message) ?></div><?php endif; ?>
+      <?php if ($message): ?><script>showToast(<?= $error ? '"Error"' : '"Success"' ?>, <?= json_encode($message) ?>, <?= json_encode($error ? 'error' : 'success') ?>, 6000);</script><?php endif; ?>
       <div class="form-row">
         <div class="field"><label for="name">Name *</label><input id="name" name="name" required autocomplete="name"></div>
         <div class="field"><label for="email">Email *</label><input id="email" name="email" type="email" required autocomplete="email"></div>
