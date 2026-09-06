@@ -26,8 +26,6 @@ $program_images = [
       'health' => $pixabay_images[7]['url'] ?? asset('images/programs/health.jpg'),
     'default' => asset('images/programs/community.jpg'),
 ];
-  $hero_image = pixabay_image(0) ?: ['url' => asset('images/hero/hero-main.jpg'), 'alt' => 'Community support'];
-  $hope_image = pixabay_image(1) ?: ['url' => asset('images/hero/children-hope.jpg'), 'alt' => 'Children receiving community support'];
   $mission_image = pixabay_image(2) ?: ['url' => asset('images/hero/volunteer-team.jpg'), 'alt' => 'Community volunteers'];
 
 include __DIR__ . '/includes/header.php';
@@ -36,7 +34,8 @@ include __DIR__ . '/includes/header.php';
 <!-- HERO -->
 <section class="hero hero-v2">
   <div class="hero-bg" aria-hidden="true">
-    <img src="<?= e($hero_image['url']) ?>" alt="" class="hero-bg-img" fetchpriority="high">
+    <video class="hero-bg-video active" muted playsinline></video>
+    <video class="hero-bg-video" muted playsinline></video>
     <div class="hero-bg-overlay"></div>
   </div>
   <div class="hero-content">
@@ -51,19 +50,6 @@ include __DIR__ . '/includes/header.php';
       <div class="hero-trust">
         <i class="bi bi-shield-check"></i>
         <span>Public Charitable Trust · Reg. <?= e(TRUST_REG_NO) ?></span>
-      </div>
-    </div>
-    <div class="hero-card-stack" data-aos="fade-up" data-aos-delay="120">
-      <div class="hero-photo-card">
-        <img src="<?= e($hope_image['url']) ?>" alt="<?= e($hope_image['alt']) ?> — illustrative" loading="eager">
-        <span class="media-label illustrative">Illustrative · Pixabay</span>
-      </div>
-      <div class="hero-floating-card">
-        <div class="hfc-icon"><i class="bi bi-heart-fill"></i></div>
-        <div>
-          <strong>Five dimensions. One purpose.</strong>
-          <span>Education · Science · Heritage · Welfare · Service</span>
-        </div>
       </div>
     </div>
   </div>
@@ -228,5 +214,14 @@ include __DIR__ . '/includes/header.php';
     </div>
   </div>
 </section>
+
+<script>
+  window.heroVideoList = [
+    '<?= asset('videos/video1.mp4') ?>',
+    '<?= asset('videos/video2.mp4') ?>',
+    '<?= asset('videos/video3.mp4') ?>',
+    '<?= asset('videos/video4.mp4') ?>'
+  ];
+</script>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>

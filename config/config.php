@@ -19,16 +19,16 @@ if ($document_root_normalized !== '' && str_starts_with($project_root_normalized
 }
 define('BASE_URL', $base_url);
 
-// define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
-// define('DB_NAME', getenv('DB_NAME') ?: 'u415413678_trust');
-// define('DB_USER', getenv('DB_USER') ?: 'u415413678_fohzo');
-// define('DB_PASS', getenv('DB_PASS') ?: 'Fohzo@0101');
-
-
 define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
 define('DB_NAME', getenv('DB_NAME') ?: 'u415413678_trust');
-define('DB_USER', getenv('DB_USER') ?: 'root');
-define('DB_PASS', getenv('DB_PASS') ?: '');
+define('DB_USER', getenv('DB_USER') ?: 'u415413678_fohzo');
+define('DB_PASS', getenv('DB_PASS') ?: 'Fohzo@0101');
+
+
+// define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
+// define('DB_NAME', getenv('DB_NAME') ?: 'u415413678_trust');
+// define('DB_USER', getenv('DB_USER') ?: 'root');
+// define('DB_PASS', getenv('DB_PASS') ?: '');
 
 
 // Public-facing trust facts (no personal trustee names)

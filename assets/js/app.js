@@ -278,6 +278,48 @@
     });
   });
 
+  // ---------- Hero video background ----------
+  const heroVideos = document.querySelectorAll('.hero-bg-video');
+  const videoList = window.heroVideoList || [];
+  let videoIndex = 0;
+  let activeSlot = 0;
+
+  function playHeroVideo() {
+    if (!heroVideos.length || !videoList.length) return;
+
+    const current = heroVideos[activeSlot];
+    const next = heroVideos[1 - activeSlot];
+    const nextIndex = (videoIndex + 1) % videoList.length;
+
+    next.src = videoList[nextIndex];
+    next.load();
+
+    const playPromise = next.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        current.classList.remove('active');
+        next.classList.add('active');
+        activeSlot = 1 - activeSlot;
+        videoIndex = nextIndex;
+      }).catch(() => {
+        videoIndex = nextIndex;
+      });
+    }
+  }
+
+  if (heroVideos.length && videoList.length) {
+    const first = heroVideos[0];
+    first.src = videoList[0];
+    first.load();
+    first.play().then(() => {
+      videoIndex = 0;
+    }).catch(() => {});
+
+    heroVideos.forEach((v) => {
+      v.addEventListener('ended', playHeroVideo);
+    });
+  }
+
   // ---------- Hero cursor spotlight ----------
   const hero = document.querySelector('.hero-v2');
   if (hero && !prefersReduced) {
