@@ -1,6 +1,9 @@
 <?php
 require_once __DIR__.'/config/config.php';
+require_once __DIR__.'/includes/pixabay.php';
 $page_title = 'Our Work | '.APP_NAME;
+$work_images = pixabay_images();
+$work_fallbacks = [asset('images/gallery/gallery-3.jpg'), asset('images/programs/education.jpg'), asset('images/gallery/gallery-1.jpg')];
 include __DIR__.'/includes/header.php';
 ?>
 <section class="page-hero">
@@ -14,8 +17,8 @@ include __DIR__.'/includes/header.php';
   <div class="container grid-3">
     <div class="card program-card" data-aos="fade-up">
       <div class="card-media">
-        <img src="<?= asset('images/gallery/gallery-3.jpg') ?>" alt="" loading="lazy">
-        <span class="media-label illustrative">Illustrative</span>
+        <img src="<?= e($work_images[3]['url'] ?? $work_fallbacks[0]) ?>" alt="Food support — illustrative" loading="lazy">
+        <span class="media-label illustrative">Illustrative · Pixabay</span>
       </div>
       <div class="card-body">
         <div class="icon"><i class="bi bi-clipboard2-check"></i></div>
@@ -25,8 +28,8 @@ include __DIR__.'/includes/header.php';
     </div>
     <div class="card program-card" data-aos="fade-up" data-aos-delay="80">
       <div class="card-media">
-        <img src="<?= asset('images/programs/education.jpg') ?>" alt="" loading="lazy">
-        <span class="media-label illustrative">Illustrative</span>
+        <img src="<?= e($work_images[4]['url'] ?? $work_fallbacks[1]) ?>" alt="Education support — illustrative" loading="lazy">
+        <span class="media-label illustrative">Illustrative · Pixabay</span>
       </div>
       <div class="card-body">
         <div class="icon"><i class="bi bi-file-earmark-bar-graph"></i></div>
@@ -36,8 +39,8 @@ include __DIR__.'/includes/header.php';
     </div>
     <div class="card program-card" data-aos="fade-up" data-aos-delay="160">
       <div class="card-media">
-        <img src="<?= asset('images/gallery/gallery-1.jpg') ?>" alt="" loading="lazy">
-        <span class="media-label illustrative">Illustrative</span>
+        <img src="<?= e($work_images[5]['url'] ?? $work_fallbacks[2]) ?>" alt="Community outreach — illustrative" loading="lazy">
+        <span class="media-label illustrative">Illustrative · Pixabay</span>
       </div>
       <div class="card-body">
         <div class="icon"><i class="bi bi-calendar2-event"></i></div>

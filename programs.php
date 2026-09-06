@@ -1,16 +1,18 @@
 <?php
 require_once __DIR__.'/config/config.php';
+require_once __DIR__.'/includes/pixabay.php';
 $page_title = 'Programs | '.APP_NAME;
 try {
   $programs = db()->query("SELECT * FROM programs WHERE status='published' ORDER BY id")->fetchAll();
 } catch (Throwable $e) { $programs = []; }
 
+$pixabay_images = pixabay_images();
 $program_images = [
-  'food' => asset('images/programs/food-support.jpg'),
-  'education' => asset('images/programs/education.jpg'),
-  'clothing' => asset('images/programs/clothing.jpg'),
-  'community' => asset('images/programs/community.jpg'),
-  'health' => asset('images/programs/health.jpg'),
+  'food' => $pixabay_images[3]['url'] ?? asset('images/programs/food-support.jpg'),
+  'education' => $pixabay_images[4]['url'] ?? asset('images/programs/education.jpg'),
+  'clothing' => $pixabay_images[5]['url'] ?? asset('images/programs/clothing.jpg'),
+  'community' => $pixabay_images[6]['url'] ?? asset('images/programs/community.jpg'),
+  'health' => $pixabay_images[7]['url'] ?? asset('images/programs/health.jpg'),
   'default' => asset('images/programs/community.jpg'),
 ];
 

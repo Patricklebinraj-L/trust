@@ -17,6 +17,14 @@ Office: Thiruvannamalai, Tamil Nadu
 3. `php database/migrate.php`
 4. Create admin once via `/admin/create-admin.php` then delete it
 
+## Pixabay media
+- Homepage, gallery fallback media, work cards and the timed donation prompt use a server-side Pixabay image pool.
+- Set `PIXABAY_API_KEY` in the server environment to override the development key in `config/config.php`.
+- Responses are cached for 30 minutes in the PHP temporary directory and fall back to the last good response or local assets when Pixabay is unavailable.
+- Images are randomized per session and marked as displayed, so reloads use different images until the available pool is exhausted before starting a new cycle.
+- If both the API and cache fail, `assets/json/images.json` is normalized and used automatically so image slots never render empty.
+- Pixabay images are labeled illustrative and must not be presented as verified Trust activity.
+
 ## Notes
 - No trustee personal names are displayed on the public site
 - Impact statistics are never fabricated

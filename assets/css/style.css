@@ -1780,6 +1780,95 @@ body::before {
   color: #fff !important;
 }
 
+/* ---------- Timed donation prompt ---------- */
+body.modal-open { overflow: hidden; }
+.donation-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  opacity: 0;
+  transition: opacity .22s ease;
+}
+.donation-modal[hidden] { display: none; }
+.donation-modal.is-visible { opacity: 1; }
+.donation-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10,10,10,.78);
+  backdrop-filter: blur(7px);
+}
+.donation-dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(220px, .9fr) minmax(280px, 1.1fr);
+  width: min(760px, 100%);
+  height: min(520px, calc(100vh - 2rem));
+  max-height: calc(100vh - 2rem);
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: var(--radius-lg);
+  background: var(--c-elevated);
+  box-shadow: 0 28px 90px rgba(0,0,0,.42);
+  transform: scale(.98);
+  transition: transform .3s var(--ease);
+}
+.donation-modal.is-visible .donation-dialog { transform: scale(1); }
+.donation-dialog-media { position: relative; min-height: 0; height: 100%; background: #1a1a1a; }
+.donation-dialog-media img { width: 100%; height: 100%; object-fit: cover; }
+.donation-dialog-media::after {
+  content: "";
+  position: absolute;
+  inset: 45% 0 0;
+  background: linear-gradient(transparent, rgba(10,10,10,.68));
+  pointer-events: none;
+}
+.donation-dialog-media .media-label { z-index: 1; }
+.donation-dialog-copy { min-height: 0; overflow-y: auto; padding: clamp(1.5rem, 4vw, 3rem); align-self: center; }
+.donation-dialog-copy h2 { margin: .2rem 0 .8rem; font-size: clamp(1.8rem, 4vw, 2.65rem); }
+.donation-dialog-copy p { margin-bottom: 1.45rem; }
+.donation-dialog-copy small { display: block; margin-top: 1rem; color: var(--c-muted); font-size: .76rem; line-height: 1.5; }
+.donation-dialog-copy small i { color: var(--c-secondary); margin-right: .25rem; }
+.donation-modal-close {
+  position: absolute;
+  top: .8rem;
+  right: .8rem;
+  z-index: 2;
+  width: 2.35rem;
+  height: 2.35rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,.55);
+  border-radius: 50%;
+  background: rgba(10,10,10,.42);
+  color: #fff;
+  cursor: pointer;
+}
+.donation-modal-close:hover { background: var(--c-secondary); border-color: var(--c-secondary); }
+@media (max-width: 640px) {
+  .donation-modal { padding: 1rem; }
+  .donation-dialog {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(150px, 34%) minmax(0, 1fr);
+    height: min(620px, calc(100vh - 2rem));
+    max-height: calc(100vh - 2rem);
+    border-radius: var(--radius);
+  }
+  .donation-dialog-media { height: auto; }
+  .donation-dialog-copy { padding: 1.35rem; }
+  .donation-dialog-copy h2 { font-size: clamp(1.65rem, 8vw, 2.2rem); }
+  .donation-dialog-copy .btn { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .donation-modal, .donation-dialog { transition: none; }
+}
+
 /* ---- 3D tilt + shine sweep for cards, pillars, programs ---- */
 .card, .pillar-card, .program-card {
   transform-style: preserve-3d;

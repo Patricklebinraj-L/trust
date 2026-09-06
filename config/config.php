@@ -6,6 +6,7 @@ session_start();
 define('APP_NAME', 'Om Aathi Sivan Pancha Mugam Charitable Trust');
 define('APP_SHORT_NAME', 'Pancha Mugam Trust');
 define('APP_TAGLINE', 'Serving People. Creating Hope.');
+define('PIXABAY_API_KEY', getenv('PIXABAY_API_KEY') ?: '57456446-523eed6de21754313be86a7e6');
 // Resolve the project prefix for both localhost subdirectories and production root hosting.
 $document_root = realpath($_SERVER['DOCUMENT_ROOT'] ?? '') ?: '';
 $project_root = realpath(__DIR__ . '/..') ?: '';

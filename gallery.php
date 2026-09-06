@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__.'/config/config.php';
+require_once __DIR__.'/includes/pixabay.php';
 $page_title = 'Gallery | '.APP_NAME;
 try {
   $items = db()->query("SELECT * FROM gallery ORDER BY id DESC")->fetchAll();
@@ -17,6 +18,12 @@ $illustrative = [
   ['title' => 'Hope in action', 'category' => 'Community', 'image' => asset('images/gallery/gallery-7.jpg')],
   ['title' => 'Shared moments', 'category' => 'Events', 'image' => asset('images/gallery/gallery-8.jpg')],
 ];
+$pixabay_gallery = pixabay_images();
+foreach ($pixabay_gallery as $i => $image) {
+  if ($i >= count($illustrative)) break;
+  $illustrative[$i]['image'] = $image['url'];
+  $illustrative[$i]['title'] .= ' · Illustrative';
+}
 
 include __DIR__.'/includes/header.php';
 ?>

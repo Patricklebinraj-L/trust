@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/pixabay.php';
 $current = basename($_SERVER['SCRIPT_NAME'] ?? 'index.php');
 ?>
 <!doctype html>
@@ -20,7 +21,7 @@ $current = basename($_SERVER['SCRIPT_NAME'] ?? 'index.php');
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
-<link rel="stylesheet" href="<?= asset('css/style.css') ?>">
+<link rel="stylesheet" href="<?= asset('css/style.css') ?>?v=<?= (int)@filemtime(__DIR__ . '/../assets/css/style.css') ?>">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>

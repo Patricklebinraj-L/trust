@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/config/config.php';
+require_once __DIR__ . '/includes/pixabay.php';
 $page_title = APP_NAME;
 $meta_description = APP_NAME . ' — ' . APP_TAGLINE . ' Education, science, Tamil heritage, food support and social service.';
 
@@ -16,14 +17,18 @@ try {
     $mission = 'To establish and support free or accessible educational, scientific, cultural, nutritional and community-development initiatives that improve the lives of students, families and society.';
 }
 
+    $pixabay_images = pixabay_images();
 $program_images = [
-    'food' => asset('images/programs/food-support.jpg'),
-    'education' => asset('images/programs/education.jpg'),
-    'clothing' => asset('images/programs/clothing.jpg'),
-    'community' => asset('images/programs/community.jpg'),
-    'health' => asset('images/programs/health.jpg'),
+      'food' => $pixabay_images[3]['url'] ?? asset('images/programs/food-support.jpg'),
+      'education' => $pixabay_images[4]['url'] ?? asset('images/programs/education.jpg'),
+      'clothing' => $pixabay_images[5]['url'] ?? asset('images/programs/clothing.jpg'),
+      'community' => $pixabay_images[6]['url'] ?? asset('images/programs/community.jpg'),
+      'health' => $pixabay_images[7]['url'] ?? asset('images/programs/health.jpg'),
     'default' => asset('images/programs/community.jpg'),
 ];
+  $hero_image = pixabay_image(0) ?: ['url' => asset('images/hero/hero-main.jpg'), 'alt' => 'Community support'];
+  $hope_image = pixabay_image(1) ?: ['url' => asset('images/hero/children-hope.jpg'), 'alt' => 'Children receiving community support'];
+  $mission_image = pixabay_image(2) ?: ['url' => asset('images/hero/volunteer-team.jpg'), 'alt' => 'Community volunteers'];
 
 include __DIR__ . '/includes/header.php';
 ?>
@@ -31,7 +36,7 @@ include __DIR__ . '/includes/header.php';
 <!-- HERO -->
 <section class="hero hero-v2">
   <div class="hero-bg" aria-hidden="true">
-    <img src="<?= asset('images/hero/hero-main.jpg') ?>" alt="" class="hero-bg-img" fetchpriority="high">
+    <img src="<?= e($hero_image['url']) ?>" alt="" class="hero-bg-img" fetchpriority="high">
     <div class="hero-bg-overlay"></div>
   </div>
   <div class="hero-content">
@@ -50,8 +55,8 @@ include __DIR__ . '/includes/header.php';
     </div>
     <div class="hero-card-stack" data-aos="fade-up" data-aos-delay="120">
       <div class="hero-photo-card">
-        <img src="<?= asset('images/hero/children-hope.jpg') ?>" alt="Community support — illustrative media" loading="eager">
-        <span class="media-label illustrative">Illustrative media</span>
+        <img src="<?= e($hope_image['url']) ?>" alt="<?= e($hope_image['alt']) ?> — illustrative" loading="eager">
+        <span class="media-label illustrative">Illustrative · Pixabay</span>
       </div>
       <div class="hero-floating-card">
         <div class="hfc-icon"><i class="bi bi-heart-fill"></i></div>
@@ -186,8 +191,8 @@ include __DIR__ . '/includes/header.php';
       <a class="btn btn-primary mt-3" href="<?= url('about.php') ?>">Our vision &amp; objectives <i class="bi bi-arrow-right"></i></a>
     </div>
     <div class="mission-photo" data-aos="fade-left">
-      <img src="<?= asset('images/hero/volunteer-team.jpg') ?>" alt="Community — illustrative" loading="lazy">
-      <span class="media-label illustrative">Illustrative media</span>
+      <img src="<?= e($mission_image['url']) ?>" alt="<?= e($mission_image['alt']) ?> — illustrative" loading="lazy">
+      <span class="media-label illustrative">Illustrative · Pixabay</span>
     </div>
   </div>
 </section>

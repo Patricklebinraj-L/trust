@@ -167,6 +167,33 @@
     });
   });
 
+  // ---------- Timed donation prompt ----------
+  const donationModal = document.getElementById('donationModal');
+  if (donationModal) {
+    const modalClose = donationModal.querySelectorAll('[data-modal-close]');
+    let lastFocused = null;
+    const modalTimer = window.setTimeout(() => {
+      lastFocused = document.activeElement;
+      donationModal.hidden = false;
+      document.body.classList.add('modal-open');
+      donationModal.classList.add('is-visible');
+      donationModal.querySelector('.donation-modal-close')?.focus();
+    }, 6000);
+
+    const closeDonationModal = () => {
+      window.clearTimeout(modalTimer);
+      donationModal.classList.remove('is-visible');
+      document.body.classList.remove('modal-open');
+      window.setTimeout(() => { donationModal.hidden = true; }, 220);
+      lastFocused?.focus?.();
+    };
+
+    modalClose.forEach((button) => button.addEventListener('click', closeDonationModal));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && donationModal.classList.contains('is-visible')) closeDonationModal();
+    });
+  }
+
   // ---------- Swiper ----------
   if (typeof Swiper !== 'undefined') {
     document.querySelectorAll('.swiper-testimonials').forEach((el) => {
